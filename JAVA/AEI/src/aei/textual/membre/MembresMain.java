@@ -17,6 +17,7 @@ public class MembresMain {
 		textual.clear();
 		textual.add(">> Inscrire un nouveau membre");
 		textual.add(">> Inscrire de nouveaux membres");
+		textual.add(">> Chercher un membre");
 		textual.add(">> Montrer les membres");
 		textual.add(">> Gestion membres");
 		textual.add(">> Supprimer un membre");
@@ -43,6 +44,11 @@ public class MembresMain {
 			membres.newMembres(i);
 			membres.gestionMembres();
 			json.write(new File("./file/membres.json"), membres);
+			MembresMain.main(null);
+			break;
+		case ">> Chercher un membre":
+			Membre membre = membres.identif();
+			membres.search(membre);
 			MembresMain.main(null);
 			break;
 		case ">> Montrer les membres":

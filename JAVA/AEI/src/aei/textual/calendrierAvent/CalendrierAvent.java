@@ -7,10 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Scanner;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import aei.textual.Json;
 import aei.textual.membre.Membre;
 import aei.textual.membre.Membres;
 
@@ -20,22 +18,31 @@ public class CalendrierAvent{
 	private CalendrierMembres calMembres = new CalendrierMembres();
 	private Membres membres = new Membres();
 	private Winner winner = new Winner();
+		
+	private static Date aujourdhui = new Date();
+	private static SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+	private static String date = formater.format(aujourdhui).toString();
 	
-	private static ObjectMapper map = new ObjectMapper();
-	private static Scanner scan = new Scanner(System.in);
+	private static File winnerFile = new File("./file/winner.json");
+	private static Json<CalendrierMembres> json = new Json<CalendrierMembres>();
 	
 	private int nbOfWinner = 2;
 	
 	// CONSTRUCTOR
 	public CalendrierAvent() {
-		
 	}
 	
 	// GETTER AND SETTER
+	/**
+	 * @return the calMembres
+	 */
 	public CalendrierMembres getCalMembres() {
 		return this.calMembres;
 	}
 	
+	/**
+	 * @param m the calMembres to set
+	 */
 	public void setCalMembres(CalendrierMembres m) {
 		this.calMembres = m;
 	}
@@ -54,18 +61,30 @@ public class CalendrierAvent{
 		this.membres = membres;
 	}
 
+	/**
+	 * @return the winners
+	 */
 	public Winner getWinner(){
 		return this.winner;
 	}
 	
+	/**
+	 * @param w the winner to set
+	 */
 	public void setWinner(Winner w) {
 		this.winner = w;
 	}
 	
+	/**
+	 * @return the nbOfWinner
+	 */
 	public int getNbOfWinner() {
 		return this.nbOfWinner;
 	}
 	
+	/**
+	 * @param n the nbOfWinner to set
+	 */
 	public void setbOfWinner(int n) {
 		this.nbOfWinner = n;
 	}	
@@ -93,28 +112,31 @@ public class CalendrierAvent{
 		System.out.println("|                           Joyeux Noel                             |");
 		System.out.println("*   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   *");
 	}
-			
+	
+	/**
+	 * Charge les gagnants du jour ou lance le tirage
+	 */
 	public void winnerJson() {
-		File winnerFile = new File("./file/winner.json");
-		Date aujourdhui = new Date();
-		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
-		String date = formater.format(aujourdhui).toString();
 		if(winnerFile.exists()) {
 			if(!this.winner.getDate().equals(date)) {
-				this.winner(winnerFile, date);
+				this.winner(); // le tirage n'a pas ete effectue aujourd'hui
 			}
 		}else {
+			// creer le fichier contenant les infos des gagnants 
 			try {
 				winnerFile.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			this.winner(winnerFile, date);
+			this.winner();
 		}
 	}
 	
-	public void winner(File file, String date) {
-		FileWriter f;
+	/**
+	 * Creer le fichier contenant les non membres gagnants puis lancer le tirage des gagnants
+	 */
+	public void winner() {
+		FileWriter f; // fichier contenant les gagnants n'appartenant pas a l'asso
 		try {
 			f = new FileWriter("./file/calendrier.txt",true);
 			f.write("Date : "+date+"\n");
@@ -122,50 +144,42 @@ public class CalendrierAvent{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.tirageWinner(file, date);
+		this.tirageWinner();
 	}
 	
-	public void tirageWinner(File json, String date) {
+	/**
+	 * Lance le tirage des gagnants
+	 */
+	public void tirageWinner() {
 		Random rand = new Random();
 		int nombreAleatoire = 0;
-		CalendrierMembres winner = new CalendrierMembres();
-		CalendrierMembres pasMbWin = new CalendrierMembres();
+		CalendrierMembres winner = new CalendrierMembres(); // gagnants
+		CalendrierMembres pasMbWin = new CalendrierMembres(); // gagnants deja tire et gagnants non membre
 		FileWriter f;
 		for(int i = 0; i < this.nbOfWinner; i++) {
 			nombreAleatoire = rand.nextInt(this.calMembres.size()-1);
-			CalendrierMembre calMb = calMembres.getList().get(nombreAleatoire);
-			while(!membres.contains(new Membre(calMb.getNom(), calMb.getPrenom()))) {
+			CalendrierMembre calMb = calMembres.getList().get(nombreAleatoire); // recupere le gagnant
+			while(!membres.contains(new Membre(calMb.getNom(), calMb.getPrenom()))) { // tant que le gagnant tire n'est pas membre {
 				try {
 					f = new FileWriter("./file/calendrier.txt",true);
-					f.write(calMb.toString()+" pas membre asso !");
+					f.write(calMb.toString()+" pas membre asso !"); // on écrit ses infos dans un fichier, pour un suivi
 					f.flush();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				pasMbWin.add(calMb);
-				calMembres.getList().remove(nombreAleatoire);
-				nombreAleatoire = rand.nextInt(this.calMembres.size()-1);
-				calMb = calMembres.getList().get(nombreAleatoire);
+				pasMbWin.add(calMb); // ajoute le non membre
+				calMembres.getList().remove(nombreAleatoire); // suppression du non membre
+				nombreAleatoire = rand.nextInt(this.calMembres.size()-1); // retire un membre au hasard
+				calMb = calMembres.getList().get(nombreAleatoire); // recupere le nouveau gagnant
 			}
-			winner.add(calMb);
-			pasMbWin.add(calMb);
-			calMembres.getList().remove(nombreAleatoire);
-			try {
-				f = new FileWriter("./file/calendrier.txt",true);
-				f.write(calMb.toString()+" pas membre asso !");
-				f.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			winner.add(calMb); // ajout du gagnant à la liste des gagnants
+			pasMbWin.add(calMb); // ajout du gagnant à la liste auxiliaire
+			calMembres.getList().remove(nombreAleatoire); // suppression du gagnant
 		}
-		this.resetMembres(pasMbWin);
+		this.calMembres = json.load(new File("./file/calendrier.json"), "CalendrierMembres");
 		this.winner.setDate(date);
 		this.winner.getWin().put(date, winner);
-		try {
-			map.writeValue(json, this.winner);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		json.writeWinner(winnerFile, this.winner);
 		System.out.println("Tirage des gagnants !");
 	}
 	
@@ -176,21 +190,9 @@ public class CalendrierAvent{
 			}
 		}
 	}
-		
-	public CalendrierMembre identif() {
-		System.out.println("Identifiant :");
-		System.out.println("> Nom [sans majuscule ni accents] ");
-		String nom = scan.nextLine();
-		System.out.println("> Prenom [sans majuscule ni accents] ");
-		String prenom = scan.nextLine();
-		CalendrierMembre membre = new CalendrierMembre();
-		membre.setNom(nom);
-		membre.setPrenom(prenom);
-		return membre;
-	}
-	
+			
 	public void tirage() {
-		CalendrierMembre calM = this.identif();
+		CalendrierMembre calM = this.calMembres.identif();
 		Membre membre = new Membre(calM.getNom(),calM.getPrenom());
 		if(this.membres.contains(membre)) {
 			if(this.calMembres.contains(calM)) {

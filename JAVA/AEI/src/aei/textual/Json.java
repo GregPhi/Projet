@@ -53,6 +53,14 @@ public class Json<S extends SkeletonListMembre<?>> {
 		}
 	}
 	
+	public void writeWinner(File json, Winner list) {
+		try {
+			map.writeValue(json, list);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Winner loadWinner() {
 		try {
 			return map.readValue(new File("./file/winner.json"), Winner.class);

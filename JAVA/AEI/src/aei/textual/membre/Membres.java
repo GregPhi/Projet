@@ -160,6 +160,18 @@ public class Membres extends SkeletonListMembre<Membre>{
 		}
 	}
 	
+	/**
+	 * Cherche un membre et affiche ses informations
+	 * @param membre : (type-S) membre
+	 */
+	public void search(Membre membre) {
+		if(this.contains(membre)) {
+			System.out.println(membre.toString());
+		}else {
+			System.out.println(membre.toString()+" n'existe pas !");
+		}
+	}
+	
 	@Override
 	/**
 	 * Affiche les informations de l'association

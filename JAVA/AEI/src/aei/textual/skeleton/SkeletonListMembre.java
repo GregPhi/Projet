@@ -1,6 +1,7 @@
 package aei.textual.skeleton;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SkeletonListMembre<S extends SkeletonMembre> {
 	// ATTRIBUTS
@@ -96,5 +97,24 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 		for(S m : this.list) {
 			System.out.println("- "+m.toString());
 		}
+	}
+	
+	/**
+	 * Renvoi un membre de type SkeletonMembre afin d'effectuer des actions sur ce membre
+	 * @return : (type-S) SkeletonMembre
+	 */
+	@SuppressWarnings("null")
+	public S identif() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Identifiant :");
+		System.out.println("> Nom [sans majuscule ni accents] ");
+		String nom = scan.nextLine();
+		System.out.println("> Prenom [sans majuscule ni accents] ");
+		String prenom = scan.nextLine();
+		S membre = null;
+		membre.setNom(nom);
+		membre.setPrenom(prenom);
+		scan.close();
+		return membre;
 	}
 }

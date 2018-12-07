@@ -47,7 +47,7 @@ public class MembresMain {
 			MembresMain.main(null);
 			break;
 		case ">> Chercher un membre":
-			Membre membre = membres.identif();
+			Membre membre = membres.identif(Membre.class);
 			membres.search(membre);
 			MembresMain.main(null);
 			break;

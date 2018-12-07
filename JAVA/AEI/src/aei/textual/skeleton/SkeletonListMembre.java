@@ -8,6 +8,8 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 	/* list de S*/
 	private ArrayList<S> list = new ArrayList<S>();
 	
+	private static Scanner scan = new Scanner(System.in);
+	
 	// CONSTRUCTOR
 	/**
 	 * Creer la liste de S
@@ -103,18 +105,35 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 	 * Renvoi un membre de type SkeletonMembre afin d'effectuer des actions sur ce membre
 	 * @return : (type-S) SkeletonMembre
 	 */
-	@SuppressWarnings("null")
-	public S identif() {
-		Scanner scan = new Scanner(System.in);
+	@SuppressWarnings("deprecation")
+	public S identif(Class<S> clazz) {
+		S membre = null;
 		System.out.println("Identifiant :");
 		System.out.println("> Nom [sans majuscule ni accents] ");
 		String nom = scan.nextLine();
 		System.out.println("> Prenom [sans majuscule ni accents] ");
 		String prenom = scan.nextLine();
-		S membre = null;
-		membre.setNom(nom);
-		membre.setPrenom(prenom);
 		scan.close();
-		return membre;
+	    try {
+			membre = clazz.newInstance();
+			membre.setNom(nom);
+			membre.setPrenom(prenom);
+		} catch (InstantiationException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    return membre;
+	}
+	
+	/**
+	 * Cherche un membre et affiche ses informations
+	 * @param membre : (type-S) membre
+	 */
+	public void search(S membre) {
+		if(this.contains(membre)) {
+			System.out.println(membre.toString());
+		}else {
+			System.out.println(membre.toString()+" n'existe pas !");
+		}
 	}
 }

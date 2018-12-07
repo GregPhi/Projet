@@ -192,7 +192,7 @@ public class CalendrierAvent{
 	}
 			
 	public void tirage() {
-		CalendrierMembre calM = this.calMembres.identif();
+		CalendrierMembre calM = this.calMembres.identif(CalendrierMembre.class);
 		Membre membre = new Membre(calM.getNom(),calM.getPrenom());
 		if(this.membres.contains(membre)) {
 			if(this.calMembres.contains(calM)) {

@@ -16,6 +16,7 @@ public class CalendrierAventMain {
 	
 	public static void initializeCal() {
 		textual.clear();
+		textual.add(">> Chercher un participant");
 		textual.add(">> Tirage pour une personne");
 		textual.add(">> Tirage pour n personnes");
 		textual.add(">> Afficher les gagnants");
@@ -35,6 +36,11 @@ public class CalendrierAventMain {
 		calendrier.winnerJson();
 		calendrier.instruction();
 		switch(s) {
+			case ">> Chercher un participant":
+				CalendrierMembre membre = calendrier.getCalMembres().identif(CalendrierMembre.class);
+				calendrier.getCalMembres().search(membre);
+				CalendrierAventMain.main(null);
+				break;
 			case ">> Tirage pour une personne":
 				calendrier.tirage();
 				CalendrierAventMain.main(null);

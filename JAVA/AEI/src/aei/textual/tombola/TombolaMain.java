@@ -17,6 +17,7 @@ public class TombolaMain {
 		textual.clear();
 		textual.add(">> Ajouter un nouveau participant");
 		textual.add(">> Ajouter de nouveaux participants");
+		textual.add(">> Chercher un participant");
 		textual.add(">> Montrer les participants");
 		textual.add(">> Ajouter un lot");
 		textual.add(">> Ajouter de nouveaux lots");
@@ -39,6 +40,7 @@ public class TombolaMain {
 		tombola.setLots(lots);
 		tombola.setParticipants(participants);
 		int i = 0;
+		Participant participant = new Participant();
 		switch(s) {
 			case ">> Ajouter un nouveau participant":
 				tombola.addParticipant();
@@ -48,6 +50,11 @@ public class TombolaMain {
 				System.out.print("Nombre de participants :");
 				i = scan.nextInt();
 				tombola.addParticipants(i);
+				TombolaMain.main(null);
+				break;
+			case ">> Chercher un participant":
+				participant = tombola.getParticipants().identif(Participant.class);
+				tombola.getParticipants().search(participant);
 				TombolaMain.main(null);
 				break;
 			case ">> Montrer les participants":
@@ -76,7 +83,7 @@ public class TombolaMain {
 				String nom = scan.nextLine();
 				System.out.println("> Prenom du participant :");
 				String prenom = scan.nextLine();
-				Participant participant = new Participant(nom, prenom);
+				participant = new Participant(nom, prenom);
 				tombola.removeParticipant(participant);
 				TombolaMain.main(null);
 				break;

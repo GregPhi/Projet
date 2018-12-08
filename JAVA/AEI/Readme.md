@@ -6,7 +6,6 @@ Projet réalisé par :
 
 ### Outils utilisés
 
-  * Maven
   * Eclipse
   * Librairie Jackson
   * Swing

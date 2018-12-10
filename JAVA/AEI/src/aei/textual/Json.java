@@ -5,12 +5,8 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import aei.textual.calendrierAvent.CalendrierMembres;
 import aei.textual.calendrierAvent.Winner;
-import aei.textual.membre.Membres;
 import aei.textual.skeleton.SkeletonListMembre;
-import aei.textual.tombola.Lots;
-import aei.textual.tombola.Participants;
 
 public class Json<S extends SkeletonListMembre<?>> {	
 	// ATTRIBUTS
@@ -24,21 +20,9 @@ public class Json<S extends SkeletonListMembre<?>> {
 	}
 	
 	// METHODS
-	@SuppressWarnings("unchecked")
-	public S load(File json, String clas) {
+	public S load(File json, Class<S> clas) {
 		try {
-			if(clas.equals("Membres")) {
-				return (S) map.readValue(json, Membres.class);	
-			}
-			if(clas.equals("CalendrierMembres")) {
-				return (S) map.readValue(json, CalendrierMembres.class);
-			}
-			if(clas.equals("Lots")) {
-				return (S) map.readValue(json, Lots.class);
-			}
-			if(clas.equals("Participants")) {
-				return (S) map.readValue(json, Participants.class);
-			}
+			return map.readValue(json, clas);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

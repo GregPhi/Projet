@@ -176,7 +176,7 @@ public class CalendrierAvent{
 			pasMbWin.add(calMb); // ajout du gagnant à la liste auxiliaire
 			calMembres.getList().remove(nombreAleatoire); // suppression du gagnant
 		}
-		this.calMembres = json.load(new File("./file/calendrier.json"), "CalendrierMembres");
+		this.calMembres = json.load(new File("./file/calendrier.json"), CalendrierMembres.class);
 		this.winner.setDate(date);
 		this.winner.getWin().put(date, winner);
 		json.writeWinner(winnerFile, this.winner);

@@ -34,8 +34,8 @@ public class TombolaMain {
 		String s = lc.chose("Quelle option voulez vous utiliser :", textual);
 		Json<Lots> jsonL = new Json<Lots>();
 		Json<Participants> jsonP = new Json<Participants>();
-		Lots lots = jsonL.load(new File("./file/lots.json"), "Lots");
-		Participants participants = jsonP.load(new File("./file/participants.json"), "Participants");
+		Lots lots = jsonL.load(new File("./file/lots.json"), Lots.class);
+		Participants participants = jsonP.load(new File("./file/participants.json"), Participants.class);
 		Tombola tombola = new Tombola();
 		tombola.setLots(lots);
 		tombola.setParticipants(participants);

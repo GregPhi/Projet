@@ -162,7 +162,7 @@ public class CalendrierAvent{
 			while(!membres.contains(new Membre(calMb.getNom(), calMb.getPrenom()))) { // tant que le gagnant tire n'est pas membre {
 				try {
 					f = new FileWriter("./file/calendrier.txt",true);
-					f.write(calMb.toString()+" pas membre asso !"); // on écrit ses infos dans un fichier, pour un suivi
+					f.write(calMb.toString()+" pas membre asso !\n"); // on écrit ses infos dans un fichier, pour un suivi
 					f.flush();
 				} catch (IOException e) {
 					e.printStackTrace();

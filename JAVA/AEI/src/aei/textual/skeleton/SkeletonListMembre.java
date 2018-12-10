@@ -105,7 +105,6 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 	 * Renvoi un membre de type SkeletonMembre afin d'effectuer des actions sur ce membre
 	 * @return : (type-S) SkeletonMembre
 	 */
-	@SuppressWarnings("deprecation")
 	public S identif(Class<S> clazz) {
 		S membre = null;
 		System.out.println("Identifiant :");
@@ -113,13 +112,11 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 		String nom = scan.nextLine();
 		System.out.println("> Prenom [sans majuscule ni accents] ");
 		String prenom = scan.nextLine();
-		scan.close();
 	    try {
 			membre = clazz.newInstance();
 			membre.setNom(nom);
 			membre.setPrenom(prenom);
 		} catch (InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    return membre;

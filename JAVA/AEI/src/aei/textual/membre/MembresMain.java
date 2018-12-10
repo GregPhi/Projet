@@ -29,7 +29,7 @@ public class MembresMain {
 		initializeMemb();
 		String s = lc.chose("Quelle option voulez vous utiliser :", textual);
 		Json<Membres> json = new Json<Membres>();
-		Membres membres = json.load(new File("./file/membres.json"),"Membres");
+		Membres membres = json.load(new File("./file/membres.json"),Membres.class);
 		switch(s) {
 		case ">> Inscrire un nouveau membre":
 			membres.newMembre();

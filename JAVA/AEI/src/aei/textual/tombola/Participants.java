@@ -41,7 +41,7 @@ public class Participants extends SkeletonListMembre<Participant> {
 	@Override
 	public void add(Participant par) {
 		Json<Membres> json = new Json<Membres>();
-		Membres membres = json.load(new File("./file/membres.json"), "Membres");
+		Membres membres = json.load(new File("./file/membres.json"), Membres.class);
 		if(!this.getList().contains(par)) {
 			if(!this.checkParticipants(membres, par.getNom(), par.getPrenom())) {
 				membres = this.newMembre(membres);
@@ -53,7 +53,7 @@ public class Participants extends SkeletonListMembre<Participant> {
 	public boolean checkAllParticipant() {
 		boolean bool = true;
 		Json<Membres> json = new Json<Membres>();
-		Membres membres = json.load(new File("./file/membres.json"),"Membres");
+		Membres membres = json.load(new File("./file/membres.json"),Membres.class);
 		membres.gestionMembres();
 		if(this.getList().size()>membres.getnbMembre()) {
 			return false;

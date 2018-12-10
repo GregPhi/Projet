@@ -6,7 +6,6 @@ Projet réalisé par :
 
 ### Outils utilisés
 
-  * Maven
   * Eclipse
   * Librairie Jackson
   * Swing
@@ -22,13 +21,5 @@ Permettre au conseil d'administration de l'Association des Etudiants en Informat
 
 *Compilation*
 
-Deux options sont possibles afin de compiler le projet :
-  * en ouvrant l'éditeur Eclipse que vous utilisez, puis en faisant clique droit sur le projet afin de l'exporter en fichier jar
-  * ou grâce à la commande $ mvn package
-
 *Exécution*
 
-$ java -jar {fichier jar du projet créé} {option}
-
-{option} :
-  * 

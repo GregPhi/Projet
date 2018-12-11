@@ -14,6 +14,6 @@ public class DebitAction extends SkeletonAction{
 	void action(SkeletonClient client) {
 		ListChoser lc = new ListChoser();
 		SkeletonCompte sCompte = lc.chose("Choississez le compte a débiter ;", client.getComptes());
-		
+		sCompte.toString();
 	}
 }

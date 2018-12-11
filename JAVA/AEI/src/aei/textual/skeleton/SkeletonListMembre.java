@@ -105,6 +105,7 @@ public class SkeletonListMembre<S extends SkeletonMembre> {
 	 * Renvoi un membre de type SkeletonMembre afin d'effectuer des actions sur ce membre
 	 * @return : (type-S) SkeletonMembre
 	 */
+	@SuppressWarnings("deprecation")
 	public S identif(Class<S> clazz) {
 		S membre = null;
 		System.out.println("Identifiant :");

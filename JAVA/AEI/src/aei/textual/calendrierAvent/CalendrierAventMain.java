@@ -30,8 +30,8 @@ public class CalendrierAventMain {
 		CalendrierAvent calendrier = new CalendrierAvent();
 		Json<CalendrierMembres> jsonCal = new Json<CalendrierMembres>();
 		Json<Membres> jsonMembres = new Json<Membres>();
-		calendrier.setCalMembres(jsonCal.load(new File("./file/calendrier.json"), "CalendrierMembres"));
-		calendrier.setMembres(jsonMembres.load(new File("./file/membres.json"), "Membres"));
+		calendrier.setCalMembres(jsonCal.load(new File("./file/calendrier.json"), CalendrierMembres.class));
+		calendrier.setMembres(jsonMembres.load(new File("./file/membres.json"), Membres.class));
 		calendrier.setWinner(jsonMembres.loadWinner());
 		calendrier.winnerJson();
 		calendrier.instruction();

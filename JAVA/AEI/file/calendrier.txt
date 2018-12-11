@@ -12,3 +12,5 @@ Nom : afrass - Prenom : ilias pas membre asso !
 Nom : Giaquinto - Prenom : Raphael pas membre asso !
 Date : 10-12-2018
 Nom : barry - Prenom : Alpha pas membre asso !
+Date : 11-12-2018
+Nom : Rocher - Prenom : Cyril pas membre asso !

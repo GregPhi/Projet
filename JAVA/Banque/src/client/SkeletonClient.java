@@ -94,4 +94,8 @@ public class SkeletonClient {
 	public String toString() {
 		return "Informations client : Nom -> "+this.nom+" | Prenom -> "+this.prenom+" | ID -> "+this.id;
 	}
+	
+	public void test() {
+		
+	}
 }

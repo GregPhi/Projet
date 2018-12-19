@@ -2,6 +2,7 @@ package compte;
 
 public enum TypeCompte {
 	/**
+	 * NN : NOT DEFINED
 	 * LA : Livret A
 	 * LDDS : Livret de développement durable et solidaire
 	 * LEP : Livret d'épargne populaire
@@ -12,5 +13,5 @@ public enum TypeCompte {
 	 * CAT : Compte à terme
 	 * CC : Compte Courant
 	 */
-	LA, LDDDS, LEP, LJ, CEL, PEL, PERP, CAT, CC;
+	ND, LA, LDDDS, LEP, LJ, CEL, PEL, PERP, CAT, CC;
 }

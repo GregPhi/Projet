@@ -1,6 +1,6 @@
 package actions;
 
-import client.SkeletonClient;
+import compte.SkeletonCompte;
 
 public abstract class SkeletonAction {
 /**
@@ -48,5 +48,5 @@ public abstract class SkeletonAction {
 	 * Execute le type de l'action, sur le <code>client</code> mis en parametre
 	 * @param client : (type-String) client 
 	 */
-	abstract void action(SkeletonClient client);
+	abstract void action(SkeletonCompte compte);
 }

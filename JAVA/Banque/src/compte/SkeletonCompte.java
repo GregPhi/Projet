@@ -1,6 +1,11 @@
 package compte;
 
-public class SkeletonCompte {
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
+public abstract class SkeletonCompte {
 /**
  * -> argent actuel
  * -> actions réalisables ?
@@ -11,15 +16,31 @@ public class SkeletonCompte {
  */
 	
 	// ATTRIBUTS
-	private float argent;
-		
-	private TypeCompte type;
+	private float argent = 0;
+	private String id = "";
 	
-	private String id;
+	private TypeCompte type= TypeCompte.ND;
+		
+	private HashMap<String,ArrayList<String>> actions = new HashMap<String, ArrayList<String>>();
+	private ArrayList<String>;
+	
+	// -- STATIC
+	private static Date aujourdhui = new Date();
+	private static SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+	private static String date = formater.format(aujourdhui).toString();
 	
 	// CONSTRUCTOR
-	public SkeletonCompte() {
-		
+	public SkeletonCompte() {	
+	}
+	
+	public SkeletonCompte(TypeCompte t) {
+		this.type = t;
+	}
+	
+	public SkeletonCompte(float a, TypeCompte t, String i) {
+		this.argent = a;
+		this.type = t;
+		this.id = i;
 	}
 
 	// GETTER AND SETTER
@@ -64,6 +85,37 @@ public class SkeletonCompte {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	/**
+	 * @return the actions
+	 */
+	public HashMap<String,ArrayList<String>> getActions() {
+		return actions;
+	}
+
+	/**
+	 * @param actions the actions to set
+	 */
+	public void setActions(HashMap<String,ArrayList<String>> actions) {
+		this.actions = actions;
+	}
+
+	// METHODS
+	public void depot(float depot) {
+		ArrayList<String> act = this.actions.get(date);
+		act.add("Depot de "+depot);
+		this.actions.put(date, act);
+		this.argent += depot;
+	}
 	
+	public void debit(float debit) {
+		float deb = this.argent-debit;
+		if(deb<0) {
+			
+		}else {
+			this.argent = deb;
+		}
+	}
 	
+	abstract void taux();
 }

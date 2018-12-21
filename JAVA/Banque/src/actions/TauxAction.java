@@ -2,9 +2,9 @@ package actions;
 
 import compte.SkeletonCompte;
 
-public class DebitAction extends SkeletonAction{
+public class TauxAction extends SkeletonAction{
 
-	public DebitAction() {
+	public TauxAction() {
 		super("debit");
 	}
 

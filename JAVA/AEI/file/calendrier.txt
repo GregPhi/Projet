@@ -14,3 +14,22 @@ Date : 10-12-2018
 Nom : barry - Prenom : Alpha pas membre asso !
 Date : 11-12-2018
 Nom : Rocher - Prenom : Cyril pas membre asso !
+Date : 12-12-2018
+Date : 13-12-2018
+Date : 14-12-2018
+Nom : Vanhems - Prenom : Florian pas membre asso !
+Nom : Lucas - Prenom : Hugo pas membre asso !
+Date : 14-12-2018
+Date : 16-12-2018
+Nom : Giaquinto - Prenom : Raphael pas membre asso !
+Nom : Uro - Prenom : Pierrick pas membre asso !
+Nom : Rocher - Prenom : Cyril pas membre asso !
+Nom : Declercq - Prenom : Lucas pas membre asso !
+Date : 17-12-2018
+Date : 18-12-2018
+Nom : barry - Prenom : Alpha pas membre asso !
+Nom : Vanhems - Prenom : Florian pas membre asso !
+Nom : Campistron - Prenom : Thomas pas membre asso !
+Date : 19-12-2018
+Date : 20-12-2018
+Nom : Vanhems - Prenom : Florian pas membre asso !

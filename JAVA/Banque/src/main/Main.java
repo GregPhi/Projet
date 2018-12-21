@@ -14,6 +14,7 @@ public class Main {
 		SkeletonComptes comptes = new SkeletonComptes();
 		CompteCourant courant = new CompteCourant(100,"ID");
 		courant.depot(100);
+		courant.depot(50);
 		comptes.add(courant);
 		client.setComptes(comptes);
 		json.write(new File("./file/client.json"), client);

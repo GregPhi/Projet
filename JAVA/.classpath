@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AEI/src"/>
+	<classpathentry kind="src" path="Banque/src"/>
+	<classpathentry kind="lib" path="AEI/lib/jackson-annotations-2.8.7.jar"/>
+	<classpathentry kind="lib" path="AEI/lib/jackson-core-2.8.7.jar"/>
+	<classpathentry kind="lib" path="AEI/lib/jackson-databind-2.8.7.jar"/>
+	<classpathentry kind="lib" path="Banque/lib/jackson-annotations-2.8.7.jar"/>
+	<classpathentry kind="lib" path="Banque/lib/jackson-core-2.8.7.jar"/>
+	<classpathentry kind="lib" path="Banque/lib/jackson-databind-2.8.7.jar"/>
+	<classpathentry kind="output" path="AEI/bin"/>
+</classpath>

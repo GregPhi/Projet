@@ -22,7 +22,7 @@ public abstract class SkeletonCompte {
 	private TypeCompte type= TypeCompte.ND;
 		
 	private HashMap<String,ArrayList<String>> actions = new HashMap<String, ArrayList<String>>();
-	private ArrayList<String>;
+	private static ArrayList<String> act = new ArrayList<String>();
 	
 	// -- STATIC
 	private static Date aujourdhui = new Date();
@@ -41,6 +41,7 @@ public abstract class SkeletonCompte {
 		this.argent = a;
 		this.type = t;
 		this.id = i;
+		this.actions.put(date, act);
 	}
 
 	// GETTER AND SETTER
@@ -102,7 +103,9 @@ public abstract class SkeletonCompte {
 
 	// METHODS
 	public void depot(float depot) {
-		ArrayList<String> act = this.actions.get(date);
+		if(this.actions.get(date)!=null) {
+			act = this.actions.get(date);
+		}
 		act.add("Depot de "+depot);
 		this.actions.put(date, act);
 		this.argent += depot;

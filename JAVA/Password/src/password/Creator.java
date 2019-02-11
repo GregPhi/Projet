@@ -1,11 +1,8 @@
-package gestionnaire.creation;
+package password;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
-
-import password.Password;
-import password.Type;
 
 public class Creator {
 	// ATTRIBUTS

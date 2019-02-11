@@ -1,4 +1,4 @@
-package gestionnaire.profil;
+package gestionnaire.model;
 
 public class Site {
 	// ATTRIBUTS

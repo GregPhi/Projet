@@ -1,4 +1,4 @@
-package gestionnaire.profil;
+package gestionnaire.model;
 
 import password.Password;
 
@@ -10,6 +10,10 @@ public class Profil {
 	
 	// CONSTRUCTOR
 	public Profil() {
+	}
+	
+	public Profil(String p) {
+		this.pseudo = p;
 	}
 
 	// GETTER AND SETTER
